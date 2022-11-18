@@ -3,6 +3,7 @@ using Prism.Events;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
+using System.Reactive;
 
 namespace AvaloniaReativeUIPrismExempleEventAggregator.ViewModels
 {
@@ -33,6 +34,30 @@ namespace AvaloniaReativeUIPrismExempleEventAggregator.ViewModels
         {
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<MessageSendEvent>().Subscribe(x => Rx2 = x); // принять изменение
+        }
+    }
+
+
+    public class UseCommandWindowViewModel : ViewModelBase
+    {
+        private IEventAggregator _eventAggregator;
+
+        [Reactive] public string Rx3 { get; set; }
+        [Reactive] public string Rx4 { get; set; }
+
+        public ReactiveCommand<Unit, Unit> DoTheThing { get; }
+
+        public UseCommandWindowViewModel(IEventAggregator eventAggregator)
+        {
+            DoTheThing = ReactiveCommand.Create(RunTheThing);
+
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<MessageSendEvent>().Subscribe(x => Rx4 = x); // принять изменение
+        }
+
+        void RunTheThing()
+        {
+            _eventAggregator.GetEvent<MessageSendEvent>().Publish(Rx3);
         }
     }
 

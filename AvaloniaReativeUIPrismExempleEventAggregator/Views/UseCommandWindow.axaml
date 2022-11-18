@@ -6,5 +6,12 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaReativeUIPrismExempleEventAggregator.Views.UseCommandWindow">
-  Welcome to UseCommandWindow!
+
+  <StackPanel>
+    <Label Content="Welcome to UseCommandWindow!"/>
+    <Button Content="Update" Command="{Binding DoTheThing}"/>
+    <TextBox Text="{Binding Rx3}"/>
+    <Label Content="{Binding Rx4}"/>
+  </StackPanel>
+  
 </UserControl>
