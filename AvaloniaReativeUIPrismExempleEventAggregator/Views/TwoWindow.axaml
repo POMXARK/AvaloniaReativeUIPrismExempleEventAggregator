@@ -2,7 +2,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaReativeUIPrismExempleEventAggregator.Views.TwoWindow">
-  Welcome to TwoWindow!
+  <DockPanel>
+    <Label Content="Welcome to TwoWindow!"/>
+    <Label Content="{Binding Rx2}" Margin="10 0 0 0"/>
+  </DockPanel>
+  
 </UserControl>
